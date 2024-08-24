@@ -237,28 +237,28 @@ class VideoProcessor(VideoProcessorBase):
 
                 # Display the text on the image
                 cv2.putText(image, text, (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
-                cv2.putText(image, "x: " + str(np.round(x, 2)), (500, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-                cv2.putText(image, "y: " + str(np.round(y, 2)), (500, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-                cv2.putText(image, "z: " + str(np.round(z, 2)), (500, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                # cv2.putText(image, "x: " + str(np.round(x, 2)), (500, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                # cv2.putText(image, "y: " + str(np.round(y, 2)), (500, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                # cv2.putText(image, "z: " + str(np.round(z, 2)), (500, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-                # Extract eye regions
-                face_landmarks = landmark_detect(image, results)
-                right_eye_corr = [face_landmarks[i] for i in RIGHT_EYE]
-                left_eye_corr = [face_landmarks[i] for i in LEFT_EYE]
-                cropped_right, cropped_left = eyes_extractor(image, right_eye_corr, left_eye_corr)
+                # # Extract eye regions
+                # face_landmarks = landmark_detect(image, results)
+                # right_eye_corr = [face_landmarks[i] for i in RIGHT_EYE]
+                # left_eye_corr = [face_landmarks[i] for i in LEFT_EYE]
+                # cropped_right, cropped_left = eyes_extractor(image, right_eye_corr, left_eye_corr)
 
-                # Estimate eye position
-                eye_pos_right, color_right = pos_estimation(cropped_right)
-                eye_pos_left, color_left = pos_estimation(cropped_left)
+                # # Estimate eye position
+                # eye_pos_right, color_right = pos_estimation(cropped_right)
+                # eye_pos_left, color_left = pos_estimation(cropped_left)
 
-                # Display eye position
-                cv2.putText(image, f"Right Eye: {eye_pos_right}", (20, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, color_right[0], 2)
-                cv2.putText(image, f"Left Eye: {eye_pos_left}", (20, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, color_left[0], 2)
+                # # Display eye position
+                # cv2.putText(image, f"Right Eye: {eye_pos_right}", (20, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, color_right[0], 2)
+                # cv2.putText(image, f"Left Eye: {eye_pos_left}", (20, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, color_left[0], 2)
         
-                if num_faces > 1:
-                    cv2.putText(image, f'Faces detected: {num_faces}', (20, img_h - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-                else:
-                    cv2.putText(image, f'Faces detected: {num_faces}', (20, img_h - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                # if num_faces > 1:
+                #     cv2.putText(image, f'Faces detected: {num_faces}', (20, img_h - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                # else:
+                #     cv2.putText(image, f'Faces detected: {num_faces}', (20, img_h - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         
         return image, num_faces
 
